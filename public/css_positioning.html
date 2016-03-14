@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Positioning Exercise</title>
+    <meta charset="UTF-8">
+    <style>
+    .box {
+        border: 1px solid black;
+        width: 50px;
+        height: 50px;
+        padding: 11px;
+        margin: 50px;
+        font-weight: bold;
+        color: white;
+        /*background-image: url(../img/codeup-arrow.png);
+        background-repeat: no-repeat;*/
+
+        /*background-position: relative;
+        background-origin: 72px 72px;*/
+    }
+
+    #red {
+        background-color: red;
+        float: left;
+        /*margin-left: 0px;*/
+
+    }
+
+    #orange {
+        background-color: orange;
+        /*margin-left: 25px;*/
+        float: left;
+    }
+
+    #yellow {
+        background-color: yellow;
+        /*margin-left: 55px;*/
+        float: left;
+    }
+
+    #green {
+        background-color: green;
+        /*margin-left: 85px;*/
+        /*clear: both;*/
+        float: left;
+        /*margin-left: 0px;*/
+    }
+
+    div:nth-child(3), div:nth-child(5) {
+        clear: left;
+        margin-left: 0px;
+    }
+
+    div:nth-child(1) {
+        margin-left: 0px;
+    }
+
+    #blue {
+        background-color: blue;
+        /*margin-left: 115px;*/
+        /*clear: both;*/
+        float: left;
+    }
+
+    #purple {
+        background-color: plum;
+        /*margin-left: 145px;*/
+        /*clear: both;*/
+        float: left;
+    }
+
+    /*Codeup arrows*/
+    div img {
+        position: relative;
+        bottom: 80px;
+        left: 40px;
+    }
+
+    /*Codeup ribbon*/
+    .ribbon {
+        position: absolute;
+        top: 0px;
+        right: 0px;
+    }
+
+    </style>
+</head>
+
+<body>
+    <h1><a href="https://en.wikipedia.org/wiki/Visible_spectrum" target="_blank" title="Visit wikipedia">Visible Spectrum Wavelengths</a></h1>
+    <img src="../img/codeup-ribbon.png" class="ribbon">
+    <div id="container">
+        <div id="red" class="box">620-750 <img src="../img/codeup-arrow.png"></div>
+        <div id="orange" class="box">590-620 <img src="../img/codeup-arrow.png"></div>
+        <div id="yellow" class="box">570-590 <img src="../img/codeup-arrow.png"></div>
+        <div id="green" class="box">495-570 <img src="../img/codeup-arrow.png"></div>
+        <div id="blue" class="box">450-495 <img src="../img/codeup-arrow.png"></div>
+        <div id="purple" class="box">380-450 <img src="../img/codeup-arrow.png"></div>
+    </div>
+</body>
+</html>
