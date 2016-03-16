@@ -35,3 +35,5 @@ if (color==favorite) {
 } else {
     console.log ("But " + favorite + " is me favorite color.");
 }
+
+(color==favorite) ? console.log((color.replace(color.substring(0,1),(color.substring(0,1).toUpperCase())) + " is me favorite color.")) : console.log("But " + favorite + " is me favorite color.");
