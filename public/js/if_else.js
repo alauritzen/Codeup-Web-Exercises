@@ -12,7 +12,7 @@ var favorite = 'blue'; // TODO: change this to your favorite color from the list
 if (color=='red') {
     console.log (color.replace(color.substring(0,1),(color.substring(0,1).toUpperCase())) + " makes bulls angry. Don't wear " + color + " in Pamplona!");
 } else if (color=='orange') {
-    console.log (color.replace(color.substring(0,1),(color.substring(0,1).toUpperCase())) + " you glad I didn't say \"banana\"?")
+    console.log (color.replace(color.substring(0,1),(color.substring(0,1).toUpperCase())) + " you glad I didn't say \"banana\"?");
 } else if (color=='yellow') {
     console.log (color.replace(color.substring(0,1),(color.substring(0,1).toUpperCase())) + " is the color of a Minion.");    
 } else if (color=='green') {
@@ -30,10 +30,5 @@ if (color=='red') {
 // TODO: Using the ternary operator, conditionally log a statement that
 //       says whether the random color matches your favorite color.
 
-if (color==favorite) {
-    console.log (color.replace(color.substring(0,1),(color.substring(0,1).toUpperCase())) + " is me favorite color.");
-} else {
-    console.log ("But " + favorite + " is me favorite color.");
-}
 
 (color==favorite) ? console.log((color.replace(color.substring(0,1),(color.substring(0,1).toUpperCase())) + " is me favorite color.")) : console.log("But " + favorite + " is me favorite color.");

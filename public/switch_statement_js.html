@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+
+<script>
+
+// ignore these lines for now
+// just know that the variable 'color' will end up with a random value from the colors array
+var colors = ['red', 'orange', 'yellow', 'green', 'blue', 'indigo', 'violet'];
+var color = colors[Math.floor(Math.random()*colors.length)];
+
+switch (color) {
+
+    // todo: create a case statement that will handle every color except indigo and violet
+    // todo: when a color is encountered log a message that tells the color, and an object of that color
+    //       example: Blue is the color of the sky.
+    case "red":
+        console.log (color.replace(color.substring(0,1),(color.substring(0,1).toUpperCase())) + " makes bulls angry. Don't wear " + color + " in Pamplona!");
+        break;
+
+    case "orange":
+        console.log (color.replace(color.substring(0,1),(color.substring(0,1).toUpperCase())) + " you glad I didn't say \"banana\"?");
+        break;
+
+    case "yellow":
+        console.log (color.replace(color.substring(0,1),(color.substring(0,1).toUpperCase())) + " is the color of a Minion.");
+        break;
+
+    case "green":
+        console.log (color.replace(color.substring(0,1),(color.substring(0,1).toUpperCase())) + "s is what you should eat on New Year's Day to make money in the new year.");
+        break;
+
+    case "blue":
+        console.log (color.replace(color.substring(0,1),(color.substring(0,1).toUpperCase())) + " is the color even Cowgirls get.");
+        break;
+
+    // todo: create a default case that will catch indigo and violet
+    // todo: for the default case, log: I do not know anything by that color.
+    default:
+        console.log ("I don't know anything about " + color + ".");
+        break;
+
+
+}
+
+
+
+
+</script>
+</body>
+</html>
