@@ -12,28 +12,35 @@
 </head>
 
 <body>
-<!-- Navbar -->
-<nav class="navbar navbar-default">
-    <div class="container-fluid">
-        <!-- contact info -->
-        <div class="navbar-header">
-            <ul class="list-unstyled personal">
-                <li><h1>Alan Lauritzen</h1></li>
-                <li><h2>San Antonio, TX</h2></li>
-                <li><h2><a href="mailto:alaurit@gmail.com">Email</a></h2></li>
-            </ul>
-        </div> <!-- end contact info -->
 
-        <!-- links nav -->
-        <div>
-            <ul class="nav navbar-nav navbar-right links">
-                <li><a href="#">About me</a></li>
-                <li><a href="#">Work history</a></li>
-                <li><a href="#">Portfolio</a></li>
-            </ul>
-        </div> <!-- end links nav -->
-    </div>
-</nav> <!-- End nav bar -->
+    <!-- Collapsible navbar -->
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+        <!-- Left-side contact info and toggle button -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <ul class="list-unstyled personal">
+                    <li><h1>Alan Lauritzen</h1></li>
+                    <li><h2>San Antonio, TX</h2></li>
+                    <li><h2><a href="mailto:alaurit@gmail.com">Email</a></h2></li>
+                </ul>
+            </div>
+
+        <!-- Right-side links that will be toggled -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">          
+                <ul class="nav navbar-nav navbar-right links">
+                    <li><a href="#">About me</a></li>
+                    <li><a href="#">Work history</a></li>
+                    <li><a href="#">Portfolio</a></li>
+                </ul>
+            </div><!-- /.navbar-collapse -->
+        </div>
+    </nav> <!-- End nav bar -->
 
     <div class="container">
         <!-- about me -->
