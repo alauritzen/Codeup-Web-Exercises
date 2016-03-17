@@ -1,0 +1,38 @@
+<!doctype html>
+<html>
+<head>
+    <title>Break-Continue practice</title>
+    <meta charset="utf-8">
+</head>
+<body>
+
+
+<script>
+    "use strict";
+    var random=0;
+    
+    do {
+        random = Math.floor((Math.random()*50)+1);
+    }
+        while (random % 2 == 0);
+    console.log ("Skip number " + random + ".");
+
+    // while (random % 2 == 0) {
+    //     random = Math.floor((Math.random()*50)+1);
+    //     }
+    // console.log ("Skip number " + random);
+
+    for (var i = 0; i <= 50; i++) {
+        if (i == random) {
+            continue;
+        } else if (i % 2 == 1) {
+            console.log (i);
+        }
+    }
+
+
+
+
+</script>
+</body>
+</html>
