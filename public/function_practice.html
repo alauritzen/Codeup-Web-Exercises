@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>More practice with functions</title>
+    <meta charset="utf-8">
+</head>
+<body>
+<script>
+"use strict";
+
+function taxBracket(householdIncome) {
+    switch (true) {
+        case householdIncome < 18450:
+            return .10;
+            console.log(householdIncome);
+            break;
+        case householdIncome < 74900:
+            return .15;
+            console.log(householdIncome);
+            break;
+        case householdIncome < 151200:
+            return .25;
+            console.log(householdIncome);
+            break;
+        case householdIncome < 230450:
+            return .28;
+            console.log(householdIncome);
+            break;
+        case householdIncome < 411500:
+            return .33;
+            console.log(householdIncome);
+            break;
+        case householdIncome < 464850:
+            return .35;
+            console.log(householdIncome);
+            break;
+        default:
+            return .396;
+            console.log(householdIncome);
+            break;
+    }
+}
+
+var income1 = prompt("What is your income?");
+var income2 = prompt("What is your spouse's income?");
+income1 = parseFloat(income1);
+income2 = parseFloat(income2);
+// console.log(income1);
+// console.log(income2);
+var householdIncome = income1 + income2;
+var taxRate = taxBracket(householdIncome);
+
+
+// console.log (income1 + income2);
+/*
+switch (true) {
+        case householdIncome < 18450:
+            console.log(householdIncome);
+            var taxRate = .10;
+            break;
+        case householdIncome < 74900:
+            console.log(householdIncome);
+            var taxRate = .15;
+            break;
+        case householdIncome < 151200:
+            console.log(householdIncome);
+            var taxRate = .25;
+            break;
+        case householdIncome < 230450:
+            console.log(householdIncome);
+            var taxRate = .28;
+            break;
+        case householdIncome < 411500:
+            console.log(householdIncome);
+            var taxRate = .33;
+            break;
+        case householdIncome < 464850:
+            console.log(householdIncome);
+            var taxRate = .35;
+            break;
+        default:
+            console.log(householdIncome);
+            var taxRate = .396;
+            break;
+    } */
+console.log ("Your tax rate is " + taxRate + ", you owe " + "$" + householdIncome*taxRate + ". You win!");
+
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>
