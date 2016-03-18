@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>User interaction</title>
+    <meta charset="utf-8">
+</head>
+<body>
+<script>
+"use strict";
+// todo: Ask the user for their name.
+//       Keep asking if an empty input is provided.
+
+do {
+    var name = prompt("What is your name?");
+} while (name == "null" || name=="");
+
+// todo: Show an alert message that welcomes the user based on their input.
+
+alert("Hello " + name + "!");
+
+// todo: Ask the user if they like pizza.
+//       Based on their answer show a creative alert message.
+
+var pizza = confirm("Do you love pizza?");
+
+if (pizza) {
+    console.log ("Good!")
+} else {
+    console.log ("Whatever.")
+}
+
+
+
+</script>
+</body>
+</html>
