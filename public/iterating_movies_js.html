@@ -1,0 +1,31 @@
+<!doctype html>
+<html>
+<head>
+    <Title>Iterating movies</Title>
+    <meta charset = "utf-8">
+</head>
+<body>
+<script>
+// Exercise 1 ==============
+// List 10 movie titles in an array with your favorite movie in the array.
+
+// Loop through and console log title, when you get to your favorite movie change the message for that movie "This is my favorite: Title"
+
+(function(){
+    var films = ["The Big Lebowski", "12 Monkeys", "About A Boy", "Starship Troopers", "Network", "Fight Club", "Die Hard", "Signs", "Coming to America", "I Heart Huckabees"];
+
+    var favorite = "Network";
+
+    for (var i = 0; i < films.length; i++) {
+        if(films[i] == favorite) {
+            console.log(films[i] + " is probably my favorite film.")
+        } else {
+            console.log("I really like the film, " + films[i] + ".")
+        }
+    }
+
+    
+})();
+</script>
+</body>
+</html>
