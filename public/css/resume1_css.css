@@ -1,0 +1,26 @@
+/* Background patterns from subtlepatterns.com */
+body {background-color: rgb(235,253,215);}
+.about_me{background-image: url(/img/congruent_pentagon.png);}
+
+/*.about_me h1, .about_me h3 {margin-left: 5%;}*/
+
+.my_name {}
+.personal {}
+
+.codeup {position: relative;}
+
+.codeup_logo{
+    position: relative;
+    top: -3px;
+    left: 0px;
+}
+
+.employer ul ul {display:none !important;}
+
+.employer:hover ul ul {display:block !important;}
+
+.workplace img {
+    max-width: 100%;
+    height: auto;
+
+}
