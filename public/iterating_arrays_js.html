@@ -1,0 +1,36 @@
+<!doctype html>
+<html>
+<head>
+    <title>Iterating arrays</title>
+    <meta charset="utf-8">
+</head>
+<body>
+
+<script>
+(function(){
+    "use strict";
+// todo:
+// Create an array of 4 names using literal array notation, in a variable called 'names'.
+
+    var names = ["Paul", "John", "George", "Ringo"];
+
+// todo:
+// Create a log statement that will log the number of elements in the names array.
+
+    console.log ("There were " + names.length + " Beatles.");
+
+// todo:
+// Create log statements that will print each of the names array elements individually.
+
+    for (var beatle = 0; beatle < names.length; beatle++) {
+        console.log (names[beatle]);
+    }
+
+    names.forEach(function(element, index, array){
+        console.log ("Undisputable fact: " + element + " was the number " + (index+1) + " coolest Beatle.");
+    })
+
+})();
+</script>
+</body>
+</html>
