@@ -1,0 +1,46 @@
+<!doctype html>
+<html>
+<head>
+    <title>Objects Early practice</title>
+    <meta charset = "utf-8">
+</head>
+<body>
+<script>
+"use strict";
+
+    // todo:
+    // Create person object with firstName and lastName properties (set to your first and last name).
+    // var person = todo;
+
+    var person = {};
+    person["firstName"] = "";
+    person["lastName"] = "";
+
+    // todo:
+    // Add a say hello method to the person object that alerts hello using the firstName and lastName properties.
+
+    person.hello = function() {
+        do {
+            this.firstName = prompt("What is your first name?");
+        } while (this.firstName == "" || this.firstName == null);
+        do {
+            this.lastName = prompt("What is your last name?")
+        } while (this.lastName == "" || this.lastName == null);
+
+        alert("Hello, " + this.firstName + " " + this.lastName + ".")
+
+        if (confirm("Are you sure you want to close this window " + this.firstName + "?")) {
+        alert("I'm sorry, " + this.firstName + ". I can't let you do that.");
+        alert("Say goodbye.");
+        }
+
+    }
+
+    // Say hello from the person object.
+    // person.sayHello();
+
+    person.hello();
+
+</script>
+</body>
+</html>
