@@ -34,6 +34,20 @@
                 "firstName" : "H.P."
             },
             "title" : "The Colour Out of Space"
+        },
+        {
+            "author" : {
+                "lastName" : "Poe",
+                "firstName" : "Edgar Allen"
+            },
+            "title" : "The Narrative of Arthur Gordon Pym of Nantucket"
+        },
+        {
+            "author" : {
+                "lastName" : "Conan Doyle",
+                "firstName" : "Arthur"
+            },
+            "title" : "The Hound of the Baskervilles"
         }
     ];
 
@@ -43,10 +57,10 @@
     // todo:
     // Loop through the array of books using .forEach and print out the specified information about each one.
     // start loop here
-    books.forEach(function (element, index, array) {
+    books.forEach(function (book, index) {
         console.log("Book #" + (index + 1));
-        console.log("Title: " + element.title);
-        console.log("Author: " + element.author.firstName + " " + element.author.lastName);
+        console.log("Title: " + book.title);
+        console.log("Author: " + book.author.firstName + " " + book.author.lastName);
         console.log("---");
     });
     // end loop here
