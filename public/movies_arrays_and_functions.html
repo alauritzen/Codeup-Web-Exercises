@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Arrays and Functions Extra Practice</title>
+    <meta charset="utf-8">
+</head>
+<body>
+<script>
+(function() {
+    var favoriteMovies = ["The Big Lebowski", "12 Monkeys", "About A Boy", "Starship Troopers", "Network", "Fight Club", "Die Hard", "Signs", "Coming to America", "I Heart Huckabees"];
+
+    favoriteMovies.sort();
+
+    console.log("Some of my favorite movies are " + favoriteMovies.join(", ") + ".");
+
+    var mostFaveIndex = favoriteMovies.indexOf("Network");
+
+    var mostFave = favoriteMovies.splice (mostFaveIndex,1);
+
+    var leastFaveIndex = favoriteMovies.indexOf("Starship Troopers");
+
+    var leastFave = favoriteMovies.splice(leastFaveIndex,1);
+
+    favoriteMovies.unshift(mostFave);
+
+    favoriteMovies.push(leastFave);
+
+    function greatFilms(arrayParam) {
+        var arrayFave = arrayParam.shift();
+        var arrayLeast = arrayParam.pop();
+        console.log("My favorite movie is probably " + arrayFave + ".");
+        console.log("My least favorite of these would be " + arrayLeast + ".");
+        console.log("That leaves: " + arrayParam.join(", ") + ". Which one of these is your favorite?");
+
+    }
+
+
+
+    greatFilms(favoriteMovies);
+
+
+})();
+</script>
+</body>
+</html>
