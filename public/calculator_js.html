@@ -64,6 +64,7 @@
         // else if button is "=", perform math function
         } else if (this.innerHTML == "=") {
             // insert call to math function
+            doMath(first,operator,second);
         
         // else if button is "C", then reset vars
         } else if (this.innerHTML == "C") {
@@ -84,6 +85,29 @@
             buttonList[i].addEventListener("click",numButton);
         } 
     
+    function doMath (firstArr, operatorArr, secondArr) {
+        var first = [];
+        for (var i=0; i<firstArr.length; i++) {
+            first += firstArr[i];
+        }
+
+        var second = [];
+        for (var i=0; i<secondArr.length; i++) {
+            second += secondArr[i];
+        }
+
+        first = parseFloat(first);
+        second = parseFloat(second);
+
+        
+        console.log(first);
+        console.log(second);
+        console.log(typeof first);
+        console.log(typeof second);
+
+        var result = first operator second;
+        console.log(result);
+    }
     
 
 
