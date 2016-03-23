@@ -47,12 +47,36 @@
     var second = [];
 
     var numButton = function (event) {
-        if (operator.length == 0) {
-            first.push(this.innerHTML);
+        // if button is a number, push to either first or second var
+        if (parseInt(this.innerHTML)) {
+            if (operator.length == 0) {
+                first.push(this.innerHTML);
+            } else {
+                second.push(this.innerHTML);
+            }
+        // else if button is ".", check that there's not already a ".", then push to either first or second var or do nothing
+        } else if (this.innerHTML == ".") {
+            if (operator.length == 0 && first.indexOf(".") == -1) {
+                first.push(this.innerHTML);
+            } else if (second.indexOf(".") == -1) {
+                second.push(this.innerHTML);
+            }
+        // else if button is "=", perform math function
+        } else if (this.innerHTML == "=") {
+            // insert call to math function
+        
+        // else if button is "C", then reset vars
+        } else if (this.innerHTML == "C") {
+            first = [];
+            operator = [];
+            second = [];
+        // else the button will be an operator
+        } else {
+            operator = this.innerHTML 
         }
-        else { second.push(this.innerHTML);}
-        console.log("first is" + first);
-        console.log("second is" + second);
+        console.log("first is " + first);
+        console.log("second is " + second);
+        console.log("operator is " + operator);
     }
     
     var buttonList = document.getElementsByTagName("button");
