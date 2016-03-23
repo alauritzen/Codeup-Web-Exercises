@@ -46,6 +46,23 @@
     var operator = [];
     var second = [];
 
+    var numButton = function (event) {
+        if (operator.length == 0) {
+            first.push(this.innerHTML);
+        }
+        else { second.push(this.innerHTML);}
+        console.log("first is" + first);
+        console.log("second is" + second);
+    }
+    
+    var buttonList = document.getElementsByTagName("button");
+    for(var i=0; i<buttonList.length; i++) {
+            buttonList[i].addEventListener("click",numButton);
+        } 
+    
+    // document.getElementById("btn7").addEventListener("click", numButton);
+
+    /* code in here works
     // assign number buttons to events
     var button7 = function (event) {
         if (operator.length == 0) {
@@ -146,7 +163,7 @@
             console.log("second is" + second);
         }
         document.getElementById("btn0").addEventListener("click", button0);  
-
+    */
 
 
 
