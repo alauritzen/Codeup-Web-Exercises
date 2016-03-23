@@ -58,7 +58,7 @@
         } else if (this.innerHTML == ".") {
             if (operator.length == 0 && first.indexOf(".") == -1) {
                 first.push(this.innerHTML);
-            } else if (second.indexOf(".") == -1) {
+            } else if (operator.length != 0 && second.indexOf(".") == -1) {
                 second.push(this.innerHTML);
             }
         // else if button is "=", perform math function
@@ -84,110 +84,7 @@
             buttonList[i].addEventListener("click",numButton);
         } 
     
-    // document.getElementById("btn7").addEventListener("click", numButton);
-
-    /* code in here works
-    // assign number buttons to events
-    var button7 = function (event) {
-        if (operator.length == 0) {
-            first.push(7);
-        } else { second.push(7);
-        }
-        console.log("first is" + first);
-        console.log("second is" + second);
-    }
-    document.getElementById("btn7").addEventListener("click", button7);
-
-    var button8 = function (event) {
-            if (operator.length == 0) {
-                first.push(8);
-            } else { second.push(8);
-            }
-            console.log("first is" + first);
-            console.log("second is" + second);
-        }
-        document.getElementById("btn8").addEventListener("click", button8);
-
-    var button9 = function (event) {
-            if (operator.length == 0) {
-                first.push(9);
-            } else { second.push(9);
-            }
-            console.log("first is" + first);
-            console.log("second is" + second);
-        }
-        document.getElementById("btn9").addEventListener("click", button9);
-
-    var button4 = function (event) {
-            if (operator.length == 0) {
-                first.push(4);
-            } else { second.push(4);
-            }
-            console.log("first is" + first);
-            console.log("second is" + second);
-        }
-        document.getElementById("btn4").addEventListener("click", button4);
-
-    var button5 = function (event) {
-            if (operator.length == 0) {
-                first.push(5);
-            } else { second.push(5);
-            }
-            console.log("first is" + first);
-            console.log("second is" + second);
-        }
-        document.getElementById("btn5").addEventListener("click", button5);
-
-    var button6 = function (event) {
-            if (operator.length == 0) {
-                first.push(6);
-            } else { second.push(6);
-            }
-            console.log("first is" + first);
-            console.log("second is" + second);
-        }
-        document.getElementById("btn6").addEventListener("click", button6);
-
-    var button1 = function (event) {
-            if (operator.length == 0) {
-                first.push(1);
-            } else { second.push(1);
-            }
-            console.log("first is" + first);
-            console.log("second is" + second);
-        }
-        document.getElementById("btn1").addEventListener("click", button1);
-
-    var button2 = function (event) {
-            if (operator.length == 0) {
-                first.push(2);
-            } else { second.push(2);
-            }
-            console.log("first is" + first);
-            console.log("second is" + second);
-        }
-        document.getElementById("btn2").addEventListener("click", button2);
-
-    var button3 = function (event) {
-            if (operator.length == 0) {
-                first.push(3);
-            } else { second.push(3);
-            }
-            console.log("first is" + first);
-            console.log("second is" + second);
-        }
-        document.getElementById("btn3").addEventListener("click", button3);
-
-    var button0 = function (event) {
-            if (operator.length == 0) {
-                first.push(0);
-            } else { second.push(0);
-            }
-            console.log("first is" + first);
-            console.log("second is" + second);
-        }
-        document.getElementById("btn0").addEventListener("click", button0);  
-    */
+    
 
 
 
