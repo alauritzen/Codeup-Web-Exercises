@@ -6,56 +6,54 @@
 <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 <style>
-button {
-    width: 60px;
-    height: 45px;
-}
 
-.btn {
-    border: 1px black solid;
-}
+    button {
+        width: 60px;
+        height: 45px;
+    }
 
-.number {
-    background-color:rgb(70,91,72);
-    color: rgb(179,219,182);
-}
+    .btn {
+        border: 1px black solid;
+    }
 
-.operator {
-    width: 90px;
-    background-color:rgb(179,219,182);
-    font-size:32px;
-    line-height: 0px;
-}
- #btnX {
-    line-height: 35px;
- }
+    .number {
+        background-color:rgb(70,91,72);
+        color: rgb(179,219,182);
+    }
 
-input {
-    height: 45px;
-    width: 118px;
-    margin-top: 25px;
-    text-align: center;
-    font-size: 25px;
-    border-width: 0px;
-    background-color: rgba(155,136,119,0.00);
-}
+    .operator {
+        width: 90px;
+        background-color:rgb(179,219,182);
+        font-size:32px;
+        line-height: 0px;
+    }
+     #btnX {
+        line-height: 35px;
+     }
 
-#operatorField { width: 40px; }
-#btnC { 
-    width: 188px;
-    background-color:rgb(155,136,119);
-}
-#btn0 { width: 124px; }
+    input {
+        height: 45px;
+        width: 118px;
+        margin-top: 25px;
+        text-align: center;
+        font-size: 25px;
+        border-width: 0px;
+        background-color: rgba(155,136,119,0.00);
+    }
 
-body { background-color:rgb(128,124,142); }
+    #operatorField { width: 40px; }
+    #btnC { 
+        width: 188px;
+        background-color:rgb(155,136,119);
+    }
+    #btn0 { width: 124px; }
 
-
-
-    
+    body { background-color:rgb(128,124,142); }
 
 </style>
 </head>
 <body>
+
     <div align="center" class="all">
         <input type="text" readonly id="firstField">
         <input type="text" readonly id="operatorField">
@@ -79,12 +77,6 @@ body { background-color:rgb(128,124,142); }
         <button type="button" class="btn btn-default btn-lg number" id="btn0">0</button>
         <button type="button" class="btn btn-default btn-lg number" id="btn.">.</button>
     </div>
-
-
-
-
-
-
 
 <script>
 (function(){
@@ -139,26 +131,27 @@ body { background-color:rgb(128,124,142); }
         console.log("second is " + second);
         console.log("operator is " + operator);
     }
+
     // event listener for all buttons
     var buttonList = document.getElementsByTagName("button");
     for(var i=0; i<buttonList.length; i++) {
             buttonList[i].addEventListener("click",numButton);
-        } 
+        }
+
     // function doMath executes when "=" button is pressed
     function doMath (firstArr, operatorArr, secondArr) {
+        // combine array of strings into one long string for first and second inputs
         var firstNumber = [];
         for (var i=0; i<firstArr.length; i++) {
             firstNumber += firstArr[i];
         }
-
         var secondNumber = [];
         for (var i=0; i<secondArr.length; i++) {
             secondNumber += secondArr[i];
         }
-
+        // convert long arrays into number data types
         first = parseFloat(firstNumber);
         second = parseFloat(secondNumber);
-
         
         console.log(first);
         console.log(second);
@@ -166,7 +159,6 @@ body { background-color:rgb(128,124,142); }
         console.log(typeof second);
 
         var result;
-
         switch (true) {
             case operator == "+":
                 result = first + second;
@@ -180,16 +172,11 @@ body { background-color:rgb(128,124,142); }
             default:
                 result = first * second;
         }
+        // convert result to string before replacing in first number spot, or subsequent calculations will return NaN
         result = result.toString();
-        console.log("Return is " + typeof result);
         return result;
     }
     
-
-
-
-
-
 })();
 </script>
 <!-- Latest compiled and minified JavaScript -->
