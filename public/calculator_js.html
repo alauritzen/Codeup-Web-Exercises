@@ -9,9 +9,10 @@
 button {
     width: 60px;
     height: 45px;
-    /*vertical-align: middle;
-    line-height: normal;
-    display:inline-block;*/
+}
+
+.btn {
+    border: 1px black solid;
 }
 
 .number {
@@ -23,15 +24,20 @@ button {
     width: 90px;
     background-color:rgb(179,219,182);
     font-size:32px;
+    line-height: 0px;
 }
+ #btnX {
+    line-height: 35px;
+ }
 
 input {
     height: 45px;
     width: 118px;
-    margin-bottom: 25px;
+    margin-top: 25px;
     text-align: center;
     font-size: 25px;
     border-width: 0px;
+    background-color: rgba(155,136,119,0.00);
 }
 
 #operatorField { width: 40px; }
@@ -41,34 +47,38 @@ input {
 }
 #btn0 { width: 124px; }
 
+body { background-color:rgb(128,124,142); }
+
+
 
     
 
 </style>
 </head>
 <body>
-    <input type="text" readonly id="firstField">
-    <input type="text" readonly id="operatorField">
-    <input type="text" readonly id="secondField"><br> 
+    <div align="center" class="all">
+        <input type="text" readonly id="firstField">
+        <input type="text" readonly id="operatorField">
+        <input type="text" readonly id="secondField"><br> 
 
-    <button type="button" class="btn btn-default btn-lg operator" id="btn+">+</button>
-    <button type="button" class="btn btn-default btn-lg clear" id="btnC">C</button><br>
-    <button type="button" class="btn btn-default btn-lg operator" id="btn-">-</button>
-    <button type="button" class="btn btn-default btn-lg number" id="btn7">7</button>
-    <button type="button" class="btn btn-default btn-lg number" id="btn8">8</button>
-    <button type="button" class="btn btn-default btn-lg number" id="btn9">9</button><br>
-    <button type="button" class="btn btn-default btn-lg operator" id="btn*">*</button>
-    <button type="button" class="btn btn-default btn-lg number" id="btn4">4</button>
-    <button type="button" class="btn btn-default btn-lg number" id="btn5">5</button>
-    <button type="button" class="btn btn-default btn-lg number" id="btn6">6</button><br>
-    <button type="button" class="btn btn-default btn-lg operator" id="btn/">/</button>
-    <button type="button" class="btn btn-default btn-lg number" id="btn1">1</button>
-    <button type="button" class="btn btn-default btn-lg number" id="btn2">2</button>
-    <button type="button" class="btn btn-default btn-lg number" id="btn3">3</button><br>
-    <button type="button" class="btn btn-default btn-lg operator" id="btn=">=</button>
-    <button type="button" class="btn btn-default btn-lg number" id="btn0">0</button>
-    <button type="button" class="btn btn-default btn-lg number" id="btn.">.</button>
- 
+        <button type="button" class="btn btn-default btn-lg operator" id="btn+">+</button>
+        <button type="button" class="btn btn-default btn-lg clear" id="btnC">C</button><br>
+        <button type="button" class="btn btn-default btn-lg operator" id="btn-">-</button>
+        <button type="button" class="btn btn-default btn-lg number" id="btn7">7</button>
+        <button type="button" class="btn btn-default btn-lg number" id="btn8">8</button>
+        <button type="button" class="btn btn-default btn-lg number" id="btn9">9</button><br>
+        <button type="button" class="btn btn-default btn-lg operator" id="btnX">*</button>
+        <button type="button" class="btn btn-default btn-lg number" id="btn4">4</button>
+        <button type="button" class="btn btn-default btn-lg number" id="btn5">5</button>
+        <button type="button" class="btn btn-default btn-lg number" id="btn6">6</button><br>
+        <button type="button" class="btn btn-default btn-lg operator" id="btn/">/</button>
+        <button type="button" class="btn btn-default btn-lg number" id="btn1">1</button>
+        <button type="button" class="btn btn-default btn-lg number" id="btn2">2</button>
+        <button type="button" class="btn btn-default btn-lg number" id="btn3">3</button><br>
+        <button type="button" class="btn btn-default btn-lg operator" id="btn=">=</button>
+        <button type="button" class="btn btn-default btn-lg number" id="btn0">0</button>
+        <button type="button" class="btn btn-default btn-lg number" id="btn.">.</button>
+    </div>
 
 
 
@@ -136,18 +146,18 @@ input {
         } 
     // function doMath executes when "=" button is pressed
     function doMath (firstArr, operatorArr, secondArr) {
-        var first = [];
+        var firstNumber = [];
         for (var i=0; i<firstArr.length; i++) {
-            first += firstArr[i];
+            firstNumber += firstArr[i];
         }
 
-        var second = [];
+        var secondNumber = [];
         for (var i=0; i<secondArr.length; i++) {
-            second += secondArr[i];
+            secondNumber += secondArr[i];
         }
 
-        first = parseFloat(first);
-        second = parseFloat(second);
+        first = parseFloat(firstNumber);
+        second = parseFloat(secondNumber);
 
         
         console.log(first);
@@ -155,7 +165,7 @@ input {
         console.log(typeof first);
         console.log(typeof second);
 
-        var result = 0;
+        var result;
 
         switch (true) {
             case operator == "+":
@@ -170,23 +180,10 @@ input {
             default:
                 result = first * second;
         }
-
+        result = result.toString();
+        console.log("Return is " + typeof result);
         return result;
     }
-    
-    /*
-    // function to change inputs
-    var showInput = function (event) {
-        document.getElementById("firstField").value = first;
-        document.getElementById("operatorField").value = operator;
-        document.getElementById("secondField").value = second;
-    }
-
-
-    // eventListeners for changes to vars first, operator, and second
-    document.getElementById("firstField").addEventListener("change", showInput);
-    document.getElementById("secondField").addEventListener("change", showInput);
-    document.getElementById("operatorField").addEventListener("change", showInput); */
     
 
 
