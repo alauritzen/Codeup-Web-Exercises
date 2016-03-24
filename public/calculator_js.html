@@ -3,34 +3,72 @@
 <head>
     <title>Calculator in JavaScript</title>
     <meta charset = "utf-8">
+<!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 <style>
+button {
+    width: 60px;
+    height: 45px;
+    /*vertical-align: middle;
+    line-height: normal;
+    display:inline-block;*/
+}
+
+.number {
+    background-color:rgb(70,91,72);
+    color: rgb(179,219,182);
+}
+
+.operator {
+    width: 90px;
+    background-color:rgb(179,219,182);
+    font-size:32px;
+}
+
+input {
+    height: 45px;
+    width: 118px;
+    margin-bottom: 25px;
+    text-align: center;
+    font-size: 25px;
+    border-width: 0px;
+}
+
+#operatorField { width: 40px; }
+#btnC { 
+    width: 188px;
+    background-color:rgb(155,136,119);
+}
+#btn0 { width: 124px; }
+
+
     
-</style>
 
 </style>
 </head>
 <body>
-<input type="number" readonly id="first">
-<input type="number" readonly id="operator">
-<input type="number" readonly id="second"><br> 
+    <input type="text" readonly id="firstField">
+    <input type="text" readonly id="operatorField">
+    <input type="text" readonly id="secondField"><br> 
 
-<button id="btn+">+</button>
-<button id="btnC">C</button><br>
-<button id="btn-">-</button>
-<button id="btn7">7</button>
-<button id="btn8">8</button>
-<button id="btn9">9</button><br>
-<button id="btn*">*</button>
-<button id="btn4">4</button>
-<button id="btn5">5</button>
-<button id="btn6">6</button><br>
-<button id="btn/">/</button>
-<button id="btn1">1</button>
-<button id="btn2">2</button>
-<button id="btn3">3</button><br>
-<button id="btn=">=</button>
-<button id="btn0">0</button>
-<button id="btn.">.</button>
+    <button type="button" class="btn btn-default btn-lg operator" id="btn+">+</button>
+    <button type="button" class="btn btn-default btn-lg clear" id="btnC">C</button><br>
+    <button type="button" class="btn btn-default btn-lg operator" id="btn-">-</button>
+    <button type="button" class="btn btn-default btn-lg number" id="btn7">7</button>
+    <button type="button" class="btn btn-default btn-lg number" id="btn8">8</button>
+    <button type="button" class="btn btn-default btn-lg number" id="btn9">9</button><br>
+    <button type="button" class="btn btn-default btn-lg operator" id="btn*">*</button>
+    <button type="button" class="btn btn-default btn-lg number" id="btn4">4</button>
+    <button type="button" class="btn btn-default btn-lg number" id="btn5">5</button>
+    <button type="button" class="btn btn-default btn-lg number" id="btn6">6</button><br>
+    <button type="button" class="btn btn-default btn-lg operator" id="btn/">/</button>
+    <button type="button" class="btn btn-default btn-lg number" id="btn1">1</button>
+    <button type="button" class="btn btn-default btn-lg number" id="btn2">2</button>
+    <button type="button" class="btn btn-default btn-lg number" id="btn3">3</button><br>
+    <button type="button" class="btn btn-default btn-lg operator" id="btn=">=</button>
+    <button type="button" class="btn btn-default btn-lg number" id="btn0">0</button>
+    <button type="button" class="btn btn-default btn-lg number" id="btn.">.</button>
+ 
 
 
 
@@ -51,40 +89,52 @@
         if (parseInt(this.innerHTML)) {
             if (operator.length == 0) {
                 first.push(this.innerHTML);
+                document.getElementById("firstField").value = first.join("");
             } else {
                 second.push(this.innerHTML);
+                document.getElementById("secondField").value = second.join("");
             }
         // else if button is ".", check that there's not already a ".", then push to either first or second var or do nothing
         } else if (this.innerHTML == ".") {
             if (operator.length == 0 && first.indexOf(".") == -1) {
                 first.push(this.innerHTML);
+                document.getElementById("firstField").value = first.join("");
             } else if (operator.length != 0 && second.indexOf(".") == -1) {
                 second.push(this.innerHTML);
+                document.getElementById("secondField").value = second.join("");
             }
         // else if button is "=", perform math function
         } else if (this.innerHTML == "=") {
             // insert call to math function
-            doMath(first,operator,second);
-        
+            first = doMath(first,operator,second);
+            operator = [];
+            second =[];
+            document.getElementById("firstField").value = first;
+            document.getElementById("secondField").value = second;
+            document.getElementById("operatorField").value = operator;
         // else if button is "C", then reset vars
         } else if (this.innerHTML == "C") {
             first = [];
             operator = [];
             second = [];
+            document.getElementById("firstField").value = first.join("");
+            document.getElementById("secondField").value = second.join("");
+            document.getElementById("operatorField").value = operator.join("");
         // else the button will be an operator
         } else {
-            operator = this.innerHTML 
+            operator = this.innerHTML;
+            document.getElementById("operatorField").value = operator; 
         }
         console.log("first is " + first);
         console.log("second is " + second);
         console.log("operator is " + operator);
     }
-    
+    // event listener for all buttons
     var buttonList = document.getElementsByTagName("button");
     for(var i=0; i<buttonList.length; i++) {
             buttonList[i].addEventListener("click",numButton);
         } 
-    
+    // function doMath executes when "=" button is pressed
     function doMath (firstArr, operatorArr, secondArr) {
         var first = [];
         for (var i=0; i<firstArr.length; i++) {
@@ -105,9 +155,38 @@
         console.log(typeof first);
         console.log(typeof second);
 
-        var result = first operator second;
-        console.log(result);
+        var result = 0;
+
+        switch (true) {
+            case operator == "+":
+                result = first + second;
+                break;
+            case operator == "-":
+                result = first - second;
+                break;
+            case operator == "/":
+                result = first / second;
+                break;
+            default:
+                result = first * second;
+        }
+
+        return result;
     }
+    
+    /*
+    // function to change inputs
+    var showInput = function (event) {
+        document.getElementById("firstField").value = first;
+        document.getElementById("operatorField").value = operator;
+        document.getElementById("secondField").value = second;
+    }
+
+
+    // eventListeners for changes to vars first, operator, and second
+    document.getElementById("firstField").addEventListener("change", showInput);
+    document.getElementById("secondField").addEventListener("change", showInput);
+    document.getElementById("operatorField").addEventListener("change", showInput); */
     
 
 
@@ -116,5 +195,7 @@
 
 })();
 </script>
+<!-- Latest compiled and minified JavaScript -->
+<!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script> -->
 </body>
 </html>
