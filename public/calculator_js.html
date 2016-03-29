@@ -136,7 +136,7 @@
     var buttonList = document.getElementsByTagName("button");
     for(var i=0; i<buttonList.length; i++) {
             buttonList[i].addEventListener("click",numButton);
-        }
+    }
 
     // function doMath executes when "=" button is pressed
     function doMath (firstArr, operatorArr, secondArr) {
@@ -169,8 +169,11 @@
             case operator == "/":
                 result = first / second;
                 break;
-            default:
+            case operator == "*":
                 result = first * second;
+                break;                
+            default:
+                result = first;
         }
         // convert result to string before replacing in first number spot, or subsequent calculations will return NaN
         result = result.toString();
