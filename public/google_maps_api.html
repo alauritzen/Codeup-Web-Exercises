@@ -1,0 +1,100 @@
+<!doctype html>
+<html>
+<head>
+    <title>Google Maps API Practice</title>
+    <meta charset="utf-8">
+<style>
+
+    #map-canvas {
+        width: 900px;
+        height: 775px;
+    }
+
+    h1 {
+        font-size: 30px;
+    }
+
+    #street-view {
+        width: 900px;
+        height: 400px;
+    }
+
+</style>
+</head>
+<body>
+    <h1>Austin Pizza Garden</h1>
+
+    <div id="map-canvas"></div>
+    <div id="street-view"></div>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyArBHPSziquESvHxEsxL-RBt8VZYTWZ5_8"></script>
+<script>
+(function() {
+"use strict";
+
+    var mapOptions = {
+        // Zoom
+        zoom: 15,
+        // Center to show roads leading to restaurant
+        center: {
+            lat: 30.235670,
+            lng: -97.850835
+        }, 
+        // change map type
+        mapTypeId: google.maps.MapTypeId.HYBRID
+
+    };
+
+    var map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
+
+// set marker
+    var apg_location = { lat: 30.235772, lng: -97.859056};
+
+    var apg_marker = new google.maps.Marker({
+        position: apg_location,
+        map: map
+    })
+
+// infowindow
+    var apg_infowindow = new google.maps.InfoWindow({
+        content: '<a href="http://www.austin-pizza-garden.com/" target="_blank">Austin Pizza Garden</a>'
+    });
+
+    apg_infowindow.open(map, apg_marker);
+
+// traffic
+    var trafficLayer = new google.maps.TrafficLayer();
+    trafficLayer.setMap(map);
+
+    var panorama = new google.maps.StreetViewPanorama(document.getElementById("street-view"), {
+        position: apg_location,
+        pov: {
+            heading: 0,
+            pitch: -3
+        }
+    });
+
+
+    // use Geocoder to find center
+    /*
+    var address = "6266 W Hwy 290, Austin, TX 78735"
+    ;
+
+    var geocoder = new google.maps.Geocoder();
+
+    geocoder.geocode({ "address": address }, function(results, status) {
+        if (status == google.maps.GeocoderStatus.OK) {
+            map.setCenter(results[0].geometry.location);
+        } else {
+            // error if not found
+            alert("Geocoding was not successful - STATUS: " + status);
+        }
+    }); */
+
+
+
+
+})();
+</script>
+</body>
+</html>
