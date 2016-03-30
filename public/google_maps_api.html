@@ -45,18 +45,72 @@
 
     };
 
-    
-
     var map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
 
-// set marker apg
-    var apg_location = { lat: 30.235772, lng: -97.859056 };
+// traffic
+    var trafficLayer = new google.maps.TrafficLayer();
+    trafficLayer.setMap(map);
 
+
+    // var restaurants = [
+    //     {
+    //         "location": {
+    //             "lat": 1243,
+    //             "long": 134
+    //         },
+    //         "name": "asdfadsf",
+    //         "address": "asdfasdfasd",
+    //         "website": "http://...."
+    //     },
+    // ];
+
+    // array of restaurants
+    var restaurants = [
+        { 
+            "location":
+                {"lat": 30.235772, "lng": -97.859056},
+            "name":"Austin Pizza Garden",
+            "address1":"6266 W Hwy 290",
+            "address2":"Austin, TX",
+            "website":"http://www.austin-pizza-garden.com/",
+            "phone":"(512) 891-9980"
+        },
+        {
+            "location":
+                {"lat": 30.284316, "lng": -97.720510},
+            "name":"Hoover's Cooking",
+            "address1":"2002 Manor Rd",
+            "address2":"Austin, TX",
+            "website":"http://www.hooverscooking.com/",
+            "phone":"(512) 479-5006"
+        },
+        {
+            "location":
+                {"lat": 30.207929, "lng": -97.781150},
+            "name":"1st Wok",
+            "address1":"603 W Stassney Ln",
+            "address2":"Austin, TX",
+            "website":"http://firstwoktx.com",
+            "phone":"(512) 444-0077"
+        }
+    ]
+    console.log(restaurants.length);
+    for (var i=0; i<restaurants.length; i++) {
+        console.log (restaurants[i].location);
+        console.log (restaurants[i].name);
+        console.log (restaurants[i].address1);
+        console.log (restaurants[i].address2);
+        console.log (restaurants[i].website);
+        console.log (restaurants[i].phone);
+        
+    }
+
+/*
+// set marker apg
     var apg_marker = new google.maps.Marker({
-        position: apg_location,
+        position: restaurants[0].apg,
         map: map
     })
-
 // infowindow
     var apg_infowindow = new google.maps.InfoWindow({
         content: '<a href="http://www.austin-pizza-garden.com/" target="_blank">Austin Pizza Garden</a>'
@@ -69,9 +123,6 @@
     });
     
 
-// traffic
-    var trafficLayer = new google.maps.TrafficLayer();
-    trafficLayer.setMap(map);
 
 //street-level view in separate div
     var panorama = new google.maps.StreetViewPanorama(document.getElementById("apg-street"), {
@@ -80,8 +131,7 @@
             heading: 0,
             pitch: -3
         }
-    });
-
+    }); */
 
     /*
 
