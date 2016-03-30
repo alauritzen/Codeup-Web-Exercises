@@ -5,9 +5,13 @@
     <meta charset "utf-8">
 <!-- Bootstrap CDN -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+<style>
+
+</style>
 </head>
 <body>
-    <h1>jQuery Practice</h1>
+    <h1 class="codeup">jQuery Practice</h1>
 
     <div class="container-fixed">
         <div class="row">
@@ -22,9 +26,9 @@
 
             <div class="col-sm-6" id="list">
                 <ul>
-                    <li>Item 1</li>
+                    <li class="codeup">Item 1</li>
                     <li>Item 2</li>
-                    <li>Item 3</li>
+                    <li class="codeup">Item 3</li>
                 </ul>
             </div>
         </div>
@@ -34,10 +38,12 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
 <script>
+
     $(document).ready(function() {
-        var contents = $("#bio").contents.html();
-        alert();
+        $('.codeup').css('border', '1px red solid');
     });
+        
+
 </script>
 </body>
 </html>
