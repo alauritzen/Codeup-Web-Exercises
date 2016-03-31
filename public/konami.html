@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Konami Code</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
+    <style>
+        .fa {
+            font-size: 20px;
+            margin: 12px;
+        }
+        
+        .before {
+            background-color:transparent;
+        }
+
+        .after {
+            background-color:yellow;
+        }
+
+    </style>
+</head>
+<body>
+    <h1>Konami Code</h1>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <i class="fa fa-arrow-up"></i>
+                <i class="fa fa-arrow-up"></i>
+                <i class="fa fa-arrow-down"></i>
+                <i class="fa fa-arrow-down"></i>
+                <i class="fa fa-arrow-left"></i>
+                <i class="fa fa-arrow-right"></i>
+                <i class="fa fa-arrow-left"></i>
+                <i class="fa fa-arrow-right"></i>
+                <span class="fa">B</span>
+                <span class="fa">A</span>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+    <script>
+        "use strict";
+
+        var array = [];
+        var cheat = [38, 38, 40, 40, 37, 39, 37, 39, 66, 65]
+        // var icons = $(".fa");
+
+        // console.log(icons);
+
+        $(document).keyup(function(event){
+            console.log(event.keyCode);
+            if (array.length < 10) {
+                array.push(event.keyCode);
+            } else if (array.length = 10) {
+                array.shift();
+                array.push(event.keyCode)};
+            
+            if (array[array.length-1] != cheat[array.length-1]) {
+                array =[];
+                $(".fa").css("background-color", "transparent");
+                alert("Incorrect. Please start again!");
+            } else {
+                $(".fa").eq(array.length-1).css("background-color", "yellow");
+            }
+
+
+            if (array[9] == cheat[9]) {
+                console.log ("You now have 30 lives! Cheater.");
+                window.location.assign("http://www.sbcds.org/contradance/whatis/");
+            }
+            
+        });
+
+    </script>
+</body>
+</html>
