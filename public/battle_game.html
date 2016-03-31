@@ -1,0 +1,67 @@
+<!-- Intent is to use JSON to create a random character, possibly to use functions within JSON to create hit points, etc derived from stats -->
+
+<!-- Then a simple battle between user-created character and computer character(s) -->
+
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Gladiator Fight</title>
+</head>
+<body>
+
+
+<script>
+(function() {
+"use strict";
+
+
+
+// First object: create a character
+    var char = {
+
+        "str": 0,
+        "dex": 0,
+        "con": 0,
+        "hp": 0,
+        "armor": 0
+
+    }
+
+    char.statGen = function() {
+        return Math.floor(Math.random() * (6-1+1) + 1) + Math.floor(Math.random() * (6-1+1) + 1) + Math.floor(Math.random() * (6-1+1) + 1);
+    }
+
+    char.modifier = function(parameter) {
+        var mod;
+        if (parameter > 10) {
+            mod = Math.floor ((parameter - 10) / 2);
+        } else if (parameter < 10) {
+            mod = Math.ceil((10 - parameter) / 2) * (-1);
+        } else {
+            mod = 0;
+        }
+        return mod;
+    }
+
+    char.str = char.statGen();
+    char.dex = char.statGen();
+    char.con = char.statGen();
+    console.log("Str: " + char.str);
+    console.log("Dex: " + char.dex);
+    console.log("Con: " + char.con);
+    char.armor = char.modifier(char.dex) + char.modifier(char.con) + 10;
+
+    console.log(char.modifier(char.dex));
+    console.log(char.modifier(char.con));
+    console.log("Armor: " + char.armor);
+    
+
+
+
+
+})();
+</script>
+</body>
+</html>
+
