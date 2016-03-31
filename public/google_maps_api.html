@@ -34,11 +34,11 @@
 
     var mapOptions = {
         // Zoom
-        zoom: 15,
+        zoom: 12,
         // Center to show roads leading to restaurant
         center: {
-            lat: 30.235670,
-            lng: -97.850835
+            lat: 30.258538,
+            lng: -97.753293
         }, 
         // change map type
         mapTypeId: google.maps.MapTypeId.HYBRID
@@ -52,23 +52,11 @@
     trafficLayer.setMap(map);
 
 
-    // var restaurants = [
-    //     {
-    //         "location": {
-    //             "lat": 1243,
-    //             "long": 134
-    //         },
-    //         "name": "asdfadsf",
-    //         "address": "asdfasdfasd",
-    //         "website": "http://...."
-    //     },
-    // ];
-
     // array of restaurants
     var restaurants = [
         { 
             "location":
-                {"lat": 30.235772, "lng": -97.859056},
+                {"lat": 30.235678, "lng": -97.8612687},
             "name":"Austin Pizza Garden",
             "address1":"6266 W Hwy 290",
             "address2":"Austin, TX",
@@ -77,7 +65,7 @@
         },
         {
             "location":
-                {"lat": 30.284316, "lng": -97.720510},
+                {"lat": 30.284171, "lng": -97.719723},
             "name":"Hoover's Cooking",
             "address1":"2002 Manor Rd",
             "address2":"Austin, TX",
@@ -86,7 +74,7 @@
         },
         {
             "location":
-                {"lat": 30.207929, "lng": -97.781150},
+                {"lat": 30.2078366, "lng": -97.783188},
             "name":"1st Wok",
             "address1":"603 W Stassney Ln",
             "address2":"Austin, TX",
@@ -94,16 +82,29 @@
             "phone":"(512) 444-0077"
         }
     ]
-    console.log(restaurants.length);
-    for (var i=0; i<restaurants.length; i++) {
-        console.log (restaurants[i].location);
-        console.log (restaurants[i].name);
-        console.log (restaurants[i].address1);
-        console.log (restaurants[i].address2);
-        console.log (restaurants[i].website);
-        console.log (restaurants[i].phone);
+
+    
+    restaurants.forEach(function (element, index, array) {
+
+        var marker = new google.maps.Marker({
+            position: element.location, map: map
+        }); 
+
+        // content that will go in each infowindow
+        var contentString = '<a href="'+ element.website + ' "target="_blank">' + element.name + '</a><br>' + element.address1 + '<br>' + element.address2 + '<br>' + element.phone;
+
+        // create infowindow for each restaurant
+        var infowindow = new google.maps.InfoWindow({
+            content: contentString
+        });
         
-    }
+        // event listener to open window
+        marker.addListener("click", function() {
+            infowindow.open(map,marker);
+            map.panTo(restaurants[index].location);
+        });
+
+    });
 
 /*
 // set marker apg
