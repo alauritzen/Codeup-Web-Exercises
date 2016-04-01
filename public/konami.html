@@ -10,19 +10,12 @@
             font-size: 20px;
             margin: 12px;
         }
-        
-        .before {
-            background-color:transparent;
-        }
-
-        .after {
-            background-color:yellow;
-        }
 
     </style>
 </head>
+
 <body>
-    <h1>Konami Code</h1>
+    <h1><span class = "hd-ltrs">K</span><span class = "hd-ltrs">o</span><span class = "hd-ltrs">n</span><span class = "hd-ltrs">a</span><span class = "hd-ltrs">m</span><span class = "hd-ltrs">i</span><span class = "hd-ltrs"> C</span><span class = "hd-ltrs">o</span><span class = "hd-ltrs">d</span><span class = "hd-ltrs">e</span></h1>
 
     <div class="container">
         <div class="row">
@@ -47,9 +40,6 @@
 
         var array = [];
         var cheat = [38, 38, 40, 40, 37, 39, 37, 39, 66, 65]
-        // var icons = $(".fa");
-
-        // console.log(icons);
 
         $(document).keyup(function(event){
             console.log(event.keyCode);
@@ -61,10 +51,12 @@
             
             if (array[array.length-1] != cheat[array.length-1]) {
                 array =[];
-                $(".fa").css("background-color", "transparent");
+                $(".fa").css("color", "black");
+                $(".hd-ltrs").css("color", "black");
                 alert("Incorrect. Please start again!");
             } else {
-                $(".fa").eq(array.length-1).css("background-color", "yellow");
+                $(".fa").eq(array.length-1).css("color", "red");
+                $(".hd-ltrs").eq(array.length-1).css("color", "red");
             }
 
 
