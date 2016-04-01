@@ -24,7 +24,19 @@
         "dex": 0,
         "con": 0,
         "hp": 0,
-        "armor": 0
+        "dodge": 0,
+        "attack": 0
+
+    }
+
+    var opponent = {
+
+        "str": 0,
+        "dex": 0,
+        "con": 0,
+        "hp": 0,
+        "dodge": 0,
+        "attack": 0
 
     }
 
@@ -44,18 +56,67 @@
         return mod;
     }
 
+    opponent.generate = function() {
+
+
+        // "str": 0,
+        // "dex": 0,
+        // "con": 0,
+        // "hp": 0,
+        // "dodge": 0,
+
+
+        opponent.str = char.statGen();
+        opponent.dex = char.statGen();
+        opponent.con = char.statGen();
+        opponent.hp = char.modifier(opponent.con) + 10;
+        opponent.attack = char.modifier(opponent.str);
+        console.log("Opponent Str: " + opponent.str);
+        console.log("Opponent Dex: " + opponent.dex);
+        console.log("Opponent Con: " + opponent.con);
+        console.log("Opponent HP: " + opponent.hp);
+        console.log("Opponent Attack: " + opponent.attack);
+        opponent.dodge = char.modifier(opponent.dex);
+        console.log("Opponent dodge: " + opponent.dodge);
+    }
+
+    opponent.generate();
+
+// player character info
     char.str = char.statGen();
     char.dex = char.statGen();
     char.con = char.statGen();
+    char.hp = char.modifier(char.con) + 10;
+    char.attack = char.modifier(char.str);
     console.log("Str: " + char.str);
     console.log("Dex: " + char.dex);
     console.log("Con: " + char.con);
-    char.armor = char.modifier(char.dex) + char.modifier(char.con) + 10;
+    console.log("char HP: " + char.hp);
+    console.log("char Attack: " + char.attack);
+    char.dodge = char.modifier(char.dex);
+    console.log("Dodge: " + char.dodge);
 
-    console.log(char.modifier(char.dex));
-    console.log(char.modifier(char.con));
-    console.log("Armor: " + char.armor);
     
+    function battle(PC, NPC) {
+        // Decide who goes first
+        var player1, player2;
+
+        if (Math.floor(Math.random() * (100-1+1)+1) %2 == 1) {
+            player1 = PC;
+            player2 = NPC;
+        } else {
+            player1 = NPC;
+            player2 = PC;
+            }
+            
+        do {
+
+
+
+        }
+    }
+
+    battle(char, opponent);
 
 
 
