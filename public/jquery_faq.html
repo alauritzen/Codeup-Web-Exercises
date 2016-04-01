@@ -85,7 +85,7 @@
 
     $(".switch").click(function (event) {
         event.preventDefault();
-        $("dd").fadeToggle(1200);
+        $("dd").slideToggle(1200);
     });
 
     $("ul").each( function (index, element) {
@@ -93,7 +93,7 @@
     });
 
     $("h3").click(function (event) {
-        $(this).next("ul").fadeToggle(800)
+        $(this).next("ul").slideToggle(800)
     });
 
     // $("h3").click(function (event) {
