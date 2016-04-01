@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
     <style>
-        .invisible {
+        .not-visible {
             display: none;
         }
     </style>
@@ -17,27 +17,27 @@
     <div class="col-md-12">
         <dl>
             <dt>What can you do at a national park?</dt>
-            <dd class = "invisible">All kinds of stuff.</dd>
+            <dd class = "not-visible">All kinds of stuff.</dd>
             <dt>What can I do at a national park that I can't do at a regular park.</dt>
-            <dd class = "invisible">You can do more patriotic stuff at a national park than you can at a regular park.</dd>
+            <dd class = "not-visible">You can do more patriotic stuff at a national park than you can at a regular park.</dd>
             <dt>Can I bring my gun to a national park?</dt>
-            <dd class = "invisible">No.</dd>
+            <dd class = "not-visible">No.</dd>
             <dt>Why not? This is 'Merica! Love it or leave it! Yee-haw!</dt>
-            <dd class = "invisible">Fine, go ahead.</dd>
+            <dd class = "not-visible">Fine, go ahead.</dd>
             <dt>Do we have to do this FAQ about national parks?</dt>
-            <dd class = "invisible">Probably not.</dd>
+            <dd class = "not-visible">Probably not.</dd>
             <dt>Would anyone notice if we did an FAQ about Game of Thrones instead?</dt>
-            <dd class = "invisible">Ooh. I don't think I want to do one about Game of Thrones. All the nerds will complain if we get something slightly wrong, or if we don't properly explain all the differences between the show and the books. You know how they are - they're worse than the gun nuts.</dd>
+            <dd class = "not-visible">Ooh. I don't think I want to do one about Game of Thrones. All the nerds will complain if we get something slightly wrong, or if we don't properly explain all the differences between the show and the books. You know how they are - they're worse than the gun nuts.</dd>
             <dt>Have we done 10 questions yet?</dt>
-            <dd class = "invisible">No. Only 7.</dd>
+            <dd class = "not-visible">No. Only 7.</dd>
             <dt>Wait. Seven before that one or seven after that one?</dt>
-            <dd class = "invisible">Seven after that one. This is eight. We need two more questions.</dd>
+            <dd class = "not-visible">Seven after that one. This is eight. We need two more questions.</dd>
             <dt>Hey, do you remember E?</dt>
-            <dd class = "invisible">Yes.</dd>
+            <dd class = "not-visible">Yes.</dd>
             <dt>Do you want to play a game of questions?</dt>
-            <dd class = "invisible">No. That was 10 questions. You win. We're done.</dd>
+            <dd class = "not-visible">No. That was 10 questions. You win. We're done.</dd>
         </dl>
-        <a href="#" class="toggle">Click to see answers!</a>
+        <a href="#" class="switch">Click to see answers!</a>
     </div>
 </div>
 
@@ -83,9 +83,9 @@
 (function() {
     "use strict";
 
-    $(".toggle").click(function (event) {
+    $(".switch").click(function (event) {
         event.preventDefault();
-        $("dd").toggleClass('invisible')
+        $("dd").toggle();
     });
 
     $("ul").each( function (index, element) {
@@ -93,11 +93,11 @@
     });
 
     $("li").click(function (event) {
-        $(this).parent("ul").addClass("invisible")
+        $(this).parent("ul").hide()
     });
 
     $("h3").click(function (event) {
-        $(this).next("ul").removeClass("invisible")
+        $(this).next("ul").show()
     });
 
 
