@@ -85,20 +85,20 @@
 
     $(".switch").click(function (event) {
         event.preventDefault();
-        $("dd").toggle();
+        $("dd").fadeToggle(1200);
     });
 
     $("ul").each( function (index, element) {
         $(element).children().first("li").css("font-weight", "bold")        
     });
 
-    $("li").click(function (event) {
-        $(this).parent("ul").hide()
+    $("h3").click(function (event) {
+        $(this).next("ul").fadeToggle(800)
     });
 
-    $("h3").click(function (event) {
-        $(this).next("ul").show()
-    });
+    // $("h3").click(function (event) {
+    //     $(this).next("ul").fadeIn(800)
+    // });
 
 
 })();
