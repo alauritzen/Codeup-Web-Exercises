@@ -35,9 +35,42 @@
             <dt>Hey, do you remember E?</dt>
             <dd class = "invisible">Yes.</dd>
             <dt>Do you want to play a game of questions?</dt>
-            <dd class = "invisible">No. You win. We're done.</dd>
+            <dd class = "invisible">No. That was 10 questions. You win. We're done.</dd>
         </dl>
         <a href="#" class="toggle">Click to see answers!</a>
+    </div>
+</div>
+
+<div class = "row">
+    <div class = "col-sm-4">
+        <h3>National Parks</h3>
+        <ul id="national-parks">
+            <li>Arches</li>
+            <li>Badlands</li>
+            <li>Carlsbad Caverns</li>
+            <li>Denali</li>
+            <li>Everglades</li>
+        </ul>
+    </div>
+    <div class = "col-sm-4">
+        <h3>State Parks of Texas</h3>
+        <ul id="state-parks-texas">
+            <li>Abilene</li>
+            <li>Big Bend</li>
+            <li>Choke Canyon</li>
+            <li>Davis Mountains</li>
+            <li>Enchanted Rock</li>
+        </ul>
+    </div>
+    <div class = "col-sm-4">
+        <h3>San Antonio Parks</h3>
+        <ul id="san-antonio-parks">
+            <li>Tyrion Lannister</li>
+            <li>Ned Stark</li>
+            <li>Jon Snow</li>
+            <li>Jamie Lannister</li>
+            <li>Hodor</li>
+        </ul>
     </div>
 </div>
 </div>
@@ -52,8 +85,21 @@
 
     $(".toggle").click(function (event) {
         event.preventDefault();
-        $("dd").toggleClass('invisible');
+        $("dd").toggleClass('invisible')
     });
+
+    $("ul").each( function (index, element) {
+        $(element).children().first("li").css("font-weight", "bold")        
+    });
+
+    $("li").click(function (event) {
+        $(this).parent("ul").addClass("invisible")
+    });
+
+    $("h3").click(function (event) {
+        $(this).next("ul").removeClass("invisible")
+    });
+
 
 })();
 </script>
