@@ -6,19 +6,15 @@
 <body>
 <script>
 
-function Person(name){
-   this.name = name;
-   // this.otherName = otherName;
+var num1 = 2;
+var num2 = 3;
+
+function multiply(a, b){
+  var answer = (a * b);
+  console.log("answer is " + answer);
 }
 
-// Add the greet method to the Person prototype property
-Person.prototype.greet = function(otherName){
-  return "Hi " + otherName + ", my name is " + name;
-}
-
-person("joe", "jim");
-
-
+multiply(num1,num2);
 
 </script>
 </body>
