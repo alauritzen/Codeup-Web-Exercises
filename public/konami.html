@@ -36,6 +36,8 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
     <script>
+    (function() {
+
         "use strict";
 
         var array = [];
@@ -43,11 +45,11 @@
 
         $(document).keyup(function(event){
             console.log(event.keyCode);
-            if (array.length < 10) {
+            // if (array.length < 10) {
                 array.push(event.keyCode);
-            } else if (array.length = 10) {
-                array.shift();
-                array.push(event.keyCode)};
+            //} // else if (array.length = 10) {
+                // array.shift();
+                // array.push(event.keyCode)};
             
             if (array[array.length-1] != cheat[array.length-1]) {
                 array =[];
@@ -67,6 +69,7 @@
             
         });
 
+    })();
     </script>
 </body>
 </html>
