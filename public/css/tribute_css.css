@@ -1,0 +1,99 @@
+/*navbar CSS*/
+#navbar {
+    position: sticky;
+    top: 0px;
+    background-color: #C2D1C2;
+}
+
+.remove-border {
+    border: 0px;
+}
+
+/*header CSS*/
+#header {
+    max-height: 15rem;
+    overflow: hidden;
+    background-color: #133C9A;
+    color: #C2D1C2;
+}
+
+.navbar-static-top {
+    margin-bottom: 0px;
+    border: 0px;
+}
+
+#header h1 {
+    font-size: 5rem;
+    float: left;
+}
+
+#header img {
+    max-width: 22rem;
+    max-height: 22rem;
+    padding-left: 70px;
+    position: relative;
+    top: 0px;
+}
+
+
+
+/*footer CSS*/
+.icons {
+    position: relative;
+    right: 10px;
+}
+
+.icons li {
+    display:inline;
+    margin-left: 1.0rem;
+    margin-right: 1.0rem;
+    font-size: 1.5rem;
+}
+
+#footer {
+    font-family: Georgia, Times, serif;
+    color: #C2D1C2;
+    background-color: #133C9A;
+}
+
+.navbar-static-bottom {
+    margin-bottom: 0px;
+    border: 0px;
+}
+
+#footer h1 {
+    font-size: 1.9rem;
+
+}
+
+#footer h2 {
+    margin-top: 0px;
+    font-size: 1.5rem;
+}
+
+i {
+        color: #C2D1C2;
+}
+
+/*common elements*/
+img {
+    float: left;
+    margin: 0px 20px 20px 20px;
+}
+
+#img_tentacle {
+    float: right;
+}
+
+#img_fm {
+    float: right;
+}
+
+.game_title {
+    display: inline-block;
+    padding-bottom: 5px;
+}
+
+.icon-bar {
+    color: #133C9A;
+}
