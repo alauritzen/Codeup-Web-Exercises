@@ -1,8 +1,9 @@
 <?php 
-require_once "functions.php";
+require_once "../Input.php";
 function pageController() {
     
-    $count=inputGet("count");
+    // $count=inputGet("count");
+    $count=input::get("count");
     
     $score["count"]=$count;
     return $score;
