@@ -3,20 +3,18 @@ require_once('../db_credentials.php');
 require_once('../park_db_connect.php');
 
 $limit=3;
-$offset=inputGet("results");
+$page=inputGet("page");
+$offset = ($page-1)*$limit;
 $selection = "SELECT * FROM national_parks LIMIT $limit OFFSET $offset";
 
 function getAllRows($dbc, $selection) {
     $data = [];
-
     $data['array']=$dbc->query($selection)->fetchAll(PDO::FETCH_ASSOC);
-
     return $data;
-
 }
 
 function inputGet($key) {
-    return isset($_REQUEST[$key]) ? $_REQUEST[$key] : 0;
+    return isset($_REQUEST[$key]) ? $_REQUEST[$key] : 1;
 }
 
 extract(getAllRows($dbc, $selection));
@@ -41,8 +39,8 @@ extract(getAllRows($dbc, $selection));
     <p>=====================</p>
 <?php }; ?> <!-- end foreach -->
 
-<p><a href="?results=<?= $offset+$limit ?>">Next</a></p>
-<p><a href="?results=<?= $offset-$limit ?>">Previous</a></p>
+<p><a href="?page=<?= $page + 1 ?>">Next</a></p>
+<p><a href="?page=<?= $page - 1 ?>">Previous</a></p>
 
 </body>
 </html>
