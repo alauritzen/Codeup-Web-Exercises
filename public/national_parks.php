@@ -44,23 +44,18 @@ function specChar($input) {
     return htmlspecialchars($input);
 }
 
-
 if (!empty($_POST)) {
-$newPark=array('park_name' => specChar($_REQUEST['park_name']), 'park_location'=>specChar($_REQUEST['park_location']), 'park_description'=>specChar($_REQUEST['park_description']));
-    
-    // getInput($newPark);
-        addPark($newPark, $dbc);
+    if (!($_REQUEST['park_name']=="") && !($_REQUEST['park_location'])=="") {
+        $newPark=array('park_name' => specChar($_REQUEST['park_name']), 'park_location'=>specChar($_REQUEST['park_location']), 'park_description'=>specChar($_REQUEST['park_description']));
+            if (($_REQUEST['park_description'])=="") {
+                $newPark['park_description']="It's undescribable!";
+            }
+            addPark($newPark, $dbc); 
+    }
 }
 
-// function getInput($newPark) {
-//     if (!isset($park_name) || !isset($park_location)) {
-//         echo "No input";
-//     } else {
-//     }
-// }
-
 function addPark ($newPark, $dbc) {
-    var_dump($newPark);
+    // var_dump($newPark);
     $sqlInsert="INSERT INTO national_parks (name, location, description)
     VALUES (:name, :location, :description)";
 
