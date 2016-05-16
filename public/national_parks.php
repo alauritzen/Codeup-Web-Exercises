@@ -44,25 +44,31 @@ function specChar($input) {
     return htmlspecialchars($input);
 }
 
-function getInput($park_name, $park_location, $park_description = "undescribable") {
-    if (!isset($_REQUEST[$park_name]) || !isset($_REQUEST[$park_location])) {
 
-    } else {
-        $newPark=array('name' => specChar($park_name), 'location'=>specChar($park_location), 'description'=>specChar($park_description));
-        addPark($newPark);
-
-    }
+if (!empty($_POST)) {
+$newPark=array('park_name' => specChar($_REQUEST['park_name']), 'park_location'=>specChar($_REQUEST['park_location']), 'park_description'=>specChar($_REQUEST['park_description']));
+    
+    // getInput($newPark);
+        addPark($newPark, $dbc);
 }
 
-function addPark ($newPark) {
+// function getInput($newPark) {
+//     if (!isset($park_name) || !isset($park_location)) {
+//         echo "No input";
+//     } else {
+//     }
+// }
+
+function addPark ($newPark, $dbc) {
+    var_dump($newPark);
     $sqlInsert="INSERT INTO national_parks (name, location, description)
     VALUES (:name, :location, :description)";
 
     $stmt=$dbc->prepare($sqlInsert);
 
-    $stmt->bindValue(':name', $newpark['name'], PDO::PARAM_STR);
-    $stmt->bindValue(':location', $newpark['location'], PDO::PARAM_STR);
-    $stmt->bindValue(':description', $newpark['description'], PDO::PARAM_STR);
+    $stmt->bindValue(':name', $newPark['park_name'], PDO::PARAM_STR);
+    $stmt->bindValue(':location', $newPark['park_location'], PDO::PARAM_STR);
+    $stmt->bindValue(':description', $newPark['park_description'], PDO::PARAM_STR);
     $stmt->execute();
 }
 
@@ -105,7 +111,7 @@ function addPark ($newPark) {
     <input id="park_description" name="park_description" type="park_description">
 </p>
 
-<button type="submit"><a href="national_parks.php">Submit</a></button>
+<button type="submit">Submit</button>
 </form>
 
 
