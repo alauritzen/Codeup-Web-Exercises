@@ -4,9 +4,18 @@ require_once('../park_db_connect.php');
 
 $limit=3;
 $page=inputGet("page");
+$lastPage=findLastPage($dbc, $limit);
+$buttons=determineButtons($page, $lastPage);
 $offset = limitPage($page, $limit);
 // ($page-1)*$limit;
 $selection = "SELECT * FROM national_parks LIMIT $limit OFFSET $offset";
+
+function findLastPage($dbc, $limit) {
+    $query="SELECT COUNT (*) FROM national_parks";
+    $totalParks=$dbc->query($query)->fetchColumn();
+    $totalPages=ceil($totalParks/$limit);
+    return $totalPages;
+}
 
 function getAllRows($dbc, $selection) {
     $data = [];
@@ -26,14 +35,12 @@ extract(getAllRows($dbc, $selection));
 // var_dump($array);
 
 
-$buttons=determineButtons($page);
-
-function determineButtons($page) {
+function determineButtons($page, $lastPage) {
     $previous='<a href="?page='. ($page - 1) . '">Previous</a>';
     $next='<a href="?page=' . ($page + 1) . '">Next</a>';
     if ($page==1) {
         return'<p>' . $next . '</p>';
-    } elseif ($page==4) {
+    } elseif ($page==$lastPage) {
         return'<p>' . $previous . '</p>';
     } else {
         return'<p>' . $previous . $next . '</p>';
@@ -50,7 +57,10 @@ if (!empty($_POST)) {
             if (($_REQUEST['park_description'])=="") {
                 $newPark['park_description']="It's undescribable!";
             }
-            addPark($newPark, $dbc); 
+            addPark($newPark, $dbc);
+            $lastPage=findLastPage($dbc, $limit);
+            $buttons=determineButtons($page, $lastPage);
+            // echo $lastPage . $buttons;
     }
 }
 
@@ -65,6 +75,7 @@ function addPark ($newPark, $dbc) {
     $stmt->bindValue(':location', $newPark['park_location'], PDO::PARAM_STR);
     $stmt->bindValue(':description', $newPark['park_description'], PDO::PARAM_STR);
     $stmt->execute();
+
 }
 
 
