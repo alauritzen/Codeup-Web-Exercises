@@ -1,6 +1,13 @@
 <?php
 require_once('../db_credentials.php');
 require_once('../park_db_connect.php');
+require_once('../Input.php');
+
+// sandy #C1983D
+// green #2A855C
+// dark grey #424242
+// light grey #A8A6A6
+// off-white #fafafa
 
 $limit=3;
 $page=inputGet("page");
@@ -9,6 +16,19 @@ $buttons=determineButtons($page, $lastPage);
 $offset = limitPage($page, $limit);
 // ($page-1)*$limit;
 $selection = "SELECT * FROM national_parks LIMIT $limit OFFSET $offset";
+
+if (!empty($_POST)) {
+    if (!($_REQUEST['park_name']=="") && !($_REQUEST['park_location'])=="") {
+        $newPark=array('park_name' => specChar($_REQUEST['park_name']), 'park_location'=>specChar($_REQUEST['park_location']), 'park_description'=>specChar($_REQUEST['park_description']));
+            if (($_REQUEST['park_description'])=="") {
+                $newPark['park_description']="It's undescribable!";
+            }
+            addPark($newPark, $dbc);
+            $lastPage=findLastPage($dbc, $limit);
+            $buttons=determineButtons($page, $lastPage);
+            // echo $lastPage . $buttons;
+    }
+}
 
 function findLastPage($dbc, $limit) {
     $query="SELECT COUNT (*) FROM national_parks";
@@ -51,18 +71,6 @@ function specChar($input) {
     return htmlspecialchars($input);
 }
 
-if (!empty($_POST)) {
-    if (!($_REQUEST['park_name']=="") && !($_REQUEST['park_location'])=="") {
-        $newPark=array('park_name' => specChar($_REQUEST['park_name']), 'park_location'=>specChar($_REQUEST['park_location']), 'park_description'=>specChar($_REQUEST['park_description']));
-            if (($_REQUEST['park_description'])=="") {
-                $newPark['park_description']="It's undescribable!";
-            }
-            addPark($newPark, $dbc);
-            $lastPage=findLastPage($dbc, $limit);
-            $buttons=determineButtons($page, $lastPage);
-            // echo $lastPage . $buttons;
-    }
-}
 
 function addPark ($newPark, $dbc) {
     // var_dump($newPark);
@@ -87,6 +95,8 @@ function addPark ($newPark, $dbc) {
 <head>
     <title>National Parks output</title>
 </head>
+<link rel='stylesheet' href="css/national_parks_css.css">
+<link href='https://fonts.googleapis.com/css?family=Signika' rel='stylesheet' type='text/css'>
 <body>
 
 <h1>Some National Parks</h1>

@@ -13,6 +13,7 @@ $create_table = 'CREATE TABLE national_parks (
     date_established DATE,
     area_in_acres DOUBLE,
     description VARCHAR (300),
+    photo_link VARCHAR (50),
     PRIMARY KEY (id)    
 );';
 
