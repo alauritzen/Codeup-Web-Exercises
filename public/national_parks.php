@@ -101,14 +101,44 @@ function addPark ($newPark, $dbc) {
 
 <h1>Some National Parks</h1>
 
+<table>
+
+    <tr id='heading'>
+        <th>Name</th>
+        <th>Location</th>
+        <th>Date established</th>
+        <th>Area (in acres)</th>
+        <th>Description</th>
+    </tr>
+
 <?php foreach($array as $park) { ?>
-    <p>Name: <?= $park['name'] ?> </p>
+    
+    <tr class='park_row'
+        <?php
+        if (empty($park['photo_link'])) {
+           echo (" style='background-color: #C1983D;'");
+        } else {
+            echo (" style='background-image: url(/{$park['photo_link']});'");
+        }
+        ?>
+    >
+        <td> <?= $park['name']; ?> </td>
+        <td> <?= $park['location']; ?> </td>
+        <td> <?= $park['date_established']; ?> </td>
+        <td> <?= number_format($park['area_in_acres'], '2', '.', ','); ?> </td>
+        <td> <?= $park['description']; ?> </td>
+
+    </tr>
+
+    <!-- <p>Name: <?= $park['name'] ?> </p>
     <p>Location: <?= $park['location'] ?> </p>
     <p>Date established: <?= $park['date_established'] ?> </p>
     <p>Area (in acres): <?= $park['area_in_acres'] ?> </p>
     <p>Description: <?= $park['description'] ?></p>
-    <p>=====================</p>
+    <p>=====================</p> -->
 <?php }; ?> <!-- end foreach -->
+
+</table>
 
 <?= $buttons ?>
 
@@ -130,6 +160,15 @@ function addPark ($newPark, $dbc) {
 <button type="submit">Submit</button>
 </form>
 
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+<script>
+// if ( <?php empty($park['photo_link']) ?> ) {
+//     $(".park_row").css('background-color', '#C1983D');
+// }   else {
+//     $(".park_row").css('background-image', 'url(/img/green_cup.png)');
+    // $(".park_row").css('background-image', 'url:(/img/NPS_CarlsbadCaverns.jpg)');
+}
+    
+</script>
 </body>
 </html>

@@ -70,11 +70,11 @@ $parks = array(
     'date_established'=>'1941-07-01',
     'area_in_acres'=>'52830.19',
     'description'=>'Ancient mammoth living quarters. The walls are adorned with early drawings by mammoths detailing the awful murder of their kin by humans.',
-    'photo_link' => 'img/NPS_MammothCave.jpg'],
+    'photo_link' => 'img/NPS_MammothCave.jpg']
 );
 
-$sqlInsert="INSERT INTO national_parks (name, location, date_established, area_in_acres, description)
-    VALUES (:name, :location, :date_established, :area_in_acres, :description)";
+$sqlInsert="INSERT INTO national_parks (name, location, date_established, area_in_acres, description, photo_link)
+    VALUES (:name, :location, :date_established, :area_in_acres, :description, :photo_link)";
 
 $stmt=$dbc->prepare($sqlInsert);
 
@@ -89,6 +89,7 @@ foreach ($parks as $park) {
     $stmt->bindValue(':date_established', $park['date_established'], PDO::PARAM_STR);
     $stmt->bindValue(':area_in_acres', $park['area_in_acres'], PDO::PARAM_STR);
     $stmt->bindValue(':description', $park['description'], PDO::PARAM_STR);
+    $stmt->bindValue(':photo_link', $park['photo_link'], PDO::PARAM_STR);
     $stmt->execute();
 };
 
