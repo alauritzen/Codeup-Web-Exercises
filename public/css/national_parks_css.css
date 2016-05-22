@@ -1,16 +1,37 @@
 body {
     background-color: #2A855C;
+    color: #424242;
 }
 
 h1 {
-    color: #FFF;
     text-align: center;
     font-size: 4rem;
     font-family: Signika, "Arial Black";
 }
 
-table {
+.previous_next {
+    /*color: #C1983D;*/
+    margin: 1.5rem;
+}
+
+.previous_next:visited {
+    color: #424242;
+}
+
+/*If I use <p> for the output*/
+.park_paragraph {
+    background-size: contain;
+    background-repeat: no-repeat;
     width: 100%;
+    height: 300px;
+    
+}
+
+/*If I use a table for the output*/
+/*table {
+    width: 100%;
+    border-collapse: collapse;
+    background-repeat: no-repeat;
 }
 
 #heading {
@@ -20,7 +41,6 @@ table {
 .park_row {
     height: 100px;
     border: 0px;
-    border-collapse: collapse;
 }
 
 th {
@@ -30,4 +50,4 @@ th {
 
 td {
     padding-left: 1.5rem;
-}
+}*/
