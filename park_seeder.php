@@ -63,7 +63,7 @@ $parks = array(
     'date_established'=>'1971-01-08',
     'area_in_acres'=>'218200.17',
     'description'=>'Sounds exciting.',
-    'photo_link' => 'img/Voyageurs.jpg'],
+    'photo_link' => 'img/NPS_Voyageurs.jpg'],
     
     ['name'=>'Mammoth Cave',
     'location'=>'Kentucky',
