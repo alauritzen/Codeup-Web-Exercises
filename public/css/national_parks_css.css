@@ -20,11 +20,22 @@ h1 {
 
 /*If I use <p> for the output*/
 .park_paragraph {
-    background-size: contain;
-    background-repeat: no-repeat;
-    width: 100%;
+    /*background-size: contain;*/
+    /*background-repeat: no-repeat;*/
+    /*clear: both;*/
+    display: inline-block;
+    width: 28%;
     height: 300px;
-    
+}
+
+.park_img {
+    width: 68%;
+    float: right; 
+    height: 300px;
+}
+
+.park_img img {
+    height: 300px;
 }
 
 /*If I use a table for the output*/

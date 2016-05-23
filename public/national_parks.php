@@ -103,19 +103,15 @@ function addPark ($newPark, $dbc) {
 
 
 <?php foreach($array as $park) { ?>
-    <div class='park_paragraph'
-        <?php
-        if (empty($park['photo_link'])) {
-           echo (" style='background-color: #C1983D;'");
-        } else {
-            echo (" style='background-image: url(/{$park['photo_link']});'");
-        } ?>
-    >
-    <p>Name: <?= $park['name'] ?> </p>
-    <p>Location: <?= $park['location'] ?> </p>
-    <p>Date established: <?= $park['date_established'] ?> </p>
-    <p>Area (in acres): <?= $park['area_in_acres'] ?> </p>
-    <p>Description: <?= $park['description'] ?></p>
+    <div class='park_paragraph'>
+        <p>Name: <?= $park['name'] ?> </p>
+        <p>Location: <?= $park['location'] ?> </p>
+        <p>Date established: <?= $park['date_established'] ?> </p>
+        <p>Area (in acres): <?= $park['area_in_acres'] ?> </p>
+        <p>Description: <?= $park['description'] ?></p>
+    </div>
+    <div class='park_img'>
+        <img src="/<?=$park['photo_link']?>" alt="<?=$park['name']?>">
     </div>
 <?php }; ?> <!-- end foreach -->
 
