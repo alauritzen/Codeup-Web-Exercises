@@ -112,7 +112,16 @@ function addPark ($newPark, $dbc) {
             <p>Description: <?= $park['description'] ?></p>
         </div>
         <div class='park_img'>
+            <?php
+            if ($park['photo_link']) {
+            ?>
             <img src="/<?=$park['photo_link']?>" alt="<?=$park['name']?>">
+            <?php
+            } else { ?>
+            <h1 class='no_image'>No image available</h1>
+            <?php
+            }
+            ?>
         </div>
     </div>
 <?php }; ?> <!-- end foreach -->
