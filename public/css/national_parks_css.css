@@ -12,12 +12,14 @@ h1 {
 }
 
 .previous_next {
-    /*color: #C1983D;*/
+    /*color: #424242;*/
     margin: 1.5rem;
+    color: #A8A6A6;
 }
 
 .previous_next:visited {
-    color: #424242;
+    /*color: #424242;*/
+    color: #A8A6A6;
 }
 
 /*If I use <p> for the output*/
@@ -45,6 +47,14 @@ h1 {
 
 .park_img img {
     height: 300px;
+}
+
+form {
+    background-color: #A8A6A6;
+    padding-top: 5px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+    box-shadow: 2px 2px #424242;
 }
 
 /*If I use a table for the output*/
