@@ -1,8 +1,11 @@
+<!-- Currently typing in location doesn't change weather -->
+
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Weather in San Antonio</title>
+    <title>Weather in San Antonio and elsewhere</title>
     <meta charset="utf=8">
+
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
     <style>
         #map-space{
@@ -36,7 +39,7 @@
             
         </div>
     </div>
-
+    <!-- set the number of days to return -->
     <div class="row">
         <div class="col-md-12">
             <form name="inputAndButton">
@@ -46,6 +49,16 @@
             </form>
         </div>
     </div>
+    <!-- Space to type in a location -->
+    <div class="row">
+        <div class="col-md-12">
+            <form name="userLocationInput">
+                <label for="userLocation">Drag the marker or type in here to chack a new location.</label>
+                <input id="userLocation" name="userLocation" type="text">
+                <button id="locationButton">Update</button>
+        </div>
+    </div>
+
 
     <!-- Conditions list here -->
     <div class="row" id="current-conditions">
@@ -58,10 +71,12 @@
     </div>
 
 </div>
+
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCEvzFqeOuQEyxPrW-drYZ0ORhWdffEs_w"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
 <script>
 (function() {
+// "use strict";
 
 // map beginning coordinates
 var coordinates = {lat: 29.426791, lng: -98.489602}
@@ -92,19 +107,38 @@ marker.addListener("dragend", function() {
     console.log("new position: " + coordinates + typeof coordinates);
 });
 
-
     
 // function for event
 var updateButtonListener = function(event) {
     event.preventDefault();
-    console.log("It clicked!");
+    // console.log("It clicked!");
     // howManyDays = document.forms.inputAndButton.userInput;
     getWeatherInfo();
 }
 
+// function for geocode
+var updateLocation = function(event) {
+    event.preventDefault();
+    console.log("Button 2 clicked!");
+    var geocoder=new google.maps.Geocoder();
+    var address=document.getElementById("userLocation").value;
+    geocoder.geocode({'address':address}, function(results, status) {
+        if(status==google.maps.GeocoderStatus.OK) {
+            map.setCenter(results[0].geometry.location);
+            marker.setPosition(results[0].geometry.location);
+            coordinates = marker.getPosition();
+            getWeatherInfo();
+        } else {
+            alert('Unable to find location. Status: ' + status);
+        }
+    });
+}
 
-// listen for Update button click
+// listen for # of days Update button click
 $("#userButton").click(updateButtonListener);
+
+// listen for location Update button click
+$("#locationButton").click(updateLocation);
 
 
 // get Weather API
@@ -116,7 +150,7 @@ function getWeatherInfo() {
     // use that to control how many days to request
 
     howManyDays = $("#userInput").val();
-    console.log("howManyDays " + howManyDays);
+    // console.log("howManyDays " + howManyDays);
 
     $("#current-conditions").html("");
 
@@ -137,7 +171,7 @@ function getWeatherInfo() {
 
         $("#current-conditions").append(city);
             
-        // create variables for each of three days
+        // create variables for each of three times during the day
         for(var i=0; i < data.list.length; i++) {
             var morn = data.list[i].temp.morn;
             var max = data.list[i].temp.max;
@@ -145,9 +179,9 @@ function getWeatherInfo() {
             var weatherIcon = data.list[i].weather[0].icon;
             var weatherCode = data.list[i].weather[0].id;
             var weatherDesc = data.list[i].weather[0].main;
-            console.log(weatherIcon);
-            console.log(weatherCode);
-            console.log(weatherDesc);
+            // console.log(weatherIcon);
+            // console.log(weatherCode);
+            // console.log(weatherDesc);
             // figure out the days in the box/infowindow, whatever
             var d = new Date();
             var daysArray = new Array(7);
@@ -166,7 +200,7 @@ function getWeatherInfo() {
                 var weekday = daysArray[d.getDay()+(i-14)];
             };
             
-            console.log(daysArray[d.getDay()+i]);
+            // console.log(daysArray[d.getDay()+i]);
 
             // box = string of html including all of the data
             var box;
@@ -187,10 +221,6 @@ function getWeatherInfo() {
 
         }; //end of for function
 
-
-        
-
-        
     }); //end of get
 }; // end of getWeatherInfo function
 
